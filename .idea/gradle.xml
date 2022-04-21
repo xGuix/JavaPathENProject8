@@ -10,8 +10,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/TourGuide" />
-            <option value="$PROJECT_DIR$/TourGuide/modules" />
-            <option value="$PROJECT_DIR$/TourGuide/modules/TourGuide" />
           </set>
         </option>
       </GradleProjectSettings>

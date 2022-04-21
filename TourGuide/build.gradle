@@ -17,8 +17,8 @@ apply plugin: "jacoco"
 
 
 bootJar {
-    baseName = 'tourGuide'
-    version =  '1.0.0'
+    baseName('tourGuide')
+    version('1.0.0')
 }
 
 
