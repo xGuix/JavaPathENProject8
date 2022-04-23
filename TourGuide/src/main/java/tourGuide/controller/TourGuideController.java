@@ -1,4 +1,4 @@
-package tourGuide;
+package tourGuide.controller;
 
 import java.util.List;
 
@@ -19,7 +19,11 @@ public class TourGuideController {
 
 	@Autowired
 	TourGuideService tourGuideService;
-	
+
+    private User getUser(String userName) {
+        return tourGuideService.getUser(userName);
+    }
+
     @RequestMapping("/")
     public String index() {
         return "Greetings from TourGuide!";
@@ -52,7 +56,7 @@ public class TourGuideController {
     }
     
     @RequestMapping("/getAllCurrentLocations")
-    public String getAllCurrentLocations() {
+    public String getAllCurrentLocations(@RequestParam String userName) {
     	// TODO: Get a list of every user's most recent location as JSON
     	//- Note: does not use gpsUtil to query for their current location, 
     	//        but rather gathers the user's current location from their stored location history.
@@ -62,8 +66,8 @@ public class TourGuideController {
     	//        "019b04a9-067a-4c76-8817-ee75088c3822": {"longitude":-48.188821,"latitude":74.84371} 
     	//        ...
     	//     }
-    	
-    	return JsonStream.serialize("");
+
+    	return JsonStream.serialize(getUser(userName).getLatestLocationTimestamp());
     }
     
     @RequestMapping("/getTripDeals")
@@ -71,10 +75,4 @@ public class TourGuideController {
     	List<Provider> providers = tourGuideService.getTripDeals(getUser(userName));
     	return JsonStream.serialize(providers);
     }
-    
-    private User getUser(String userName) {
-    	return tourGuideService.getUser(userName);
-    }
-   
-
 }
