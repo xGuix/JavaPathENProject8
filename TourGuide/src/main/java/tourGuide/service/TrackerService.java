@@ -12,6 +12,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import tourGuide.user.User;
 
+/**
+ * Tracker Service
+ */
 @Service
 public class TrackerService extends Thread {
 	private Logger logger = LoggerFactory.getLogger(TrackerService.class);
@@ -20,9 +23,13 @@ public class TrackerService extends Thread {
 	private final TourGuideService tourGuideService;
 	private boolean stop = false;
 
+	/**
+	 * Constructor
+	 *
+	 * @param tourGuideService TourGuideService
+	 */
 	TrackerService(TourGuideService tourGuideService) {
 		this.tourGuideService = tourGuideService;
-		
 		executorService.submit(this);
 	}
 
@@ -33,7 +40,10 @@ public class TrackerService extends Thread {
 		stop = true;
 		executorService.shutdownNow();
 	}
-	
+
+	/**
+	 * Run
+	 */
 	@Override
 	public void run() {
 		StopWatch stopWatch = new StopWatch();

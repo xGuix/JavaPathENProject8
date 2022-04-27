@@ -26,6 +26,9 @@ import tourGuide.user.UserReward;
 import tripPricer.Provider;
 import tripPricer.TripPricer;
 
+/**
+ * Tour Guide Service
+ */
 @Service
 public class TourGuideService {
 	private final Logger logger = LoggerFactory.getLogger(TourGuideService.class);
@@ -107,7 +110,8 @@ public class TourGuideService {
 		      }
 		    });
 	}
-	
+
+
 	/**********************************************************************************
 	 * 
 	 * Methods Below: For Internal Testing
