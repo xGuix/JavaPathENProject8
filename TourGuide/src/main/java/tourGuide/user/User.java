@@ -8,6 +8,9 @@ import java.util.UUID;
 import gpsUtil.location.VisitedLocation;
 import tripPricer.Provider;
 
+/**
+ * User Model
+ */
 public class User {
 	private final UUID userId;
 	private final String userName;
@@ -18,6 +21,27 @@ public class User {
 	private List<UserReward> userRewards = new ArrayList<>();
 	private UserPreferences userPreferences = new UserPreferences();
 	private List<Provider> tripDeals = new ArrayList<>();
+
+	/**
+	 * Default constructor
+	 *
+	 * @param userId
+	 * @param userName
+	 */
+	public User(UUID userId, String userName) {
+		this.userId = userId;
+		this.userName = userName;
+
+	}
+
+	/**
+	 * Full constructor
+	 *
+	 * @param userId
+	 * @param userName
+	 * @param phoneNumber
+	 * @param emailAddress
+	 */
 	public User(UUID userId, String userName, String phoneNumber, String emailAddress) {
 		this.userId = userId;
 		this.userName = userName;
@@ -98,5 +122,4 @@ public class User {
 	public List<Provider> getTripDeals() {
 		return tripDeals;
 	}
-
 }
