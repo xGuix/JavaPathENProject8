@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertTrue;
 
 public class TestPerformance {
-	
+
 	/*
 	 * A note on performance improvements:
 	 *     
@@ -43,11 +43,12 @@ public class TestPerformance {
 	@Test
 	public void highVolumeTrackLocation() {
 		GpsUtil gpsUtil = new GpsUtil();
+		RewardCentral rewardCentral = new RewardCentral();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		// Users should be incremented up to 100,000, and test finishes within 15 minutes
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
 		InternalTestHelper.setInternalUserNumber(100);
-		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, gpsUtil, rewardsService);
+		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, gpsUtil, rewardsService, rewardCentral);
 
 		List<User> allUsers;
 		allUsers = tourGuideService.getAllUsers();
@@ -67,21 +68,24 @@ public class TestPerformance {
 	@Test
 	public void highVolumeGetRewards() {
 		GpsUtil gpsUtil = new GpsUtil();
+		RewardCentral rewardCentral = new RewardCentral();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		// Users should be incremented up to 100,000, and test finishes within 20 minutes
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
 		InternalTestHelper.setInternalUserNumber(10);
 		StopWatch stopWatch = new StopWatch();
 		stopWatch.start();
-		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet,gpsUtil, rewardsService);
+		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet,gpsUtil, rewardsService, rewardCentral);
 		
 	    Attraction attraction = gpsUtil.getAttractions().get(0);
 		List<User> allUsers;
 		allUsers = tourGuideService.getAllUsers();
 		allUsers.forEach(u -> u.addToVisitedLocations(new VisitedLocation(u.getUserId(), attraction, new Date())));
-	     
-	    allUsers.forEach(u -> rewardsService.calculateRewards(u));
-	    
+
+		for (User u : allUsers) {
+			rewardsService.calculateRewards(u);
+		}
+
 		for(User user : allUsers) {
 			assertTrue(user.getUserRewards().size() > 0);
 		}
