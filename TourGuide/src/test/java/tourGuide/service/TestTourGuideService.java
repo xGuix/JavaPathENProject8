@@ -1,23 +1,21 @@
-package tourGuide;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+package tourGuide.service;
 
 import java.util.List;
 import java.util.UUID;
 
-import org.junit.Test;
-
 import gpsUtil.GpsUtil;
 import gpsUtil.location.VisitedLocation;
+import org.junit.jupiter.api.Test;
 import rewardCentral.RewardCentral;
+import tripPricer.Provider;
+
 import tourGuide.dto.NearbyAttractions;
 import tourGuide.helper.InternalTestDataSet;
 import tourGuide.helper.InternalTestHelper;
-import tourGuide.service.RewardsService;
-import tourGuide.service.TourGuideService;
 import tourGuide.user.User;
-import tripPricer.Provider;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TestTourGuideService {
 
@@ -27,7 +25,7 @@ public class TestTourGuideService {
 		RewardCentral rewardCentral = new RewardCentral();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
-		InternalTestHelper.setInternalUserNumber(0);
+		InternalTestHelper.setInternalUserNumber(10);
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, gpsUtil, rewardsService, rewardCentral);
 		
 		User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
@@ -42,7 +40,7 @@ public class TestTourGuideService {
 		RewardCentral rewardCentral = new RewardCentral();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
-		InternalTestHelper.setInternalUserNumber(0);
+		InternalTestHelper.setInternalUserNumber(10);
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, gpsUtil, rewardsService, rewardCentral);
 		
 		User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
@@ -66,7 +64,7 @@ public class TestTourGuideService {
 		RewardCentral rewardCentral = new RewardCentral();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
-		InternalTestHelper.setInternalUserNumber(0);
+		InternalTestHelper.setInternalUserNumber(10);
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, gpsUtil, rewardsService, rewardCentral);
 		
 		User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
@@ -89,7 +87,7 @@ public class TestTourGuideService {
 		RewardCentral rewardCentral = new RewardCentral();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
-		InternalTestHelper.setInternalUserNumber(0);
+		InternalTestHelper.setInternalUserNumber(10);
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, gpsUtil, rewardsService, rewardCentral);
 		
 		User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
@@ -106,7 +104,7 @@ public class TestTourGuideService {
 		RewardCentral rewardCentral = new RewardCentral();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
-		InternalTestHelper.setInternalUserNumber(0);
+		InternalTestHelper.setInternalUserNumber(10);
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, gpsUtil, rewardsService, rewardCentral);
 		
 		User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
@@ -124,7 +122,7 @@ public class TestTourGuideService {
 		RewardCentral rewardCentral = new RewardCentral();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
-		InternalTestHelper.setInternalUserNumber(0);
+		InternalTestHelper.setInternalUserNumber(10);
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, gpsUtil, rewardsService, rewardCentral);
 		
 		User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");

@@ -12,12 +12,12 @@ plugins {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
+apply plugin: 'jacoco'
 apply plugin: 'io.spring.dependency-management'
-apply plugin: "jacoco"
 
 bootJar {
-    baseName('tourGuide')
-    version('1.0.0')
+    archivesBaseName = 'tourGuide'
+    archiveVersion = '1.0.0'
 }
 
 repositories {
@@ -27,23 +27,30 @@ repositories {
     }
 }
 
-sourceCompatibility = 11
-targetCompatibility = 11
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web:2.6.7'
     implementation 'org.springframework.boot:spring-boot-starter-actuator:2.6.7'
+    implementation 'org.springframework.boot:spring-boot-starter-test:2.6.7'
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.2'
     implementation 'org.javamoney:moneta:1.4.2'
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.13.2'
+    implementation 'com.jsoniter:jsoniter:0.9.23'
 
     implementation name:'gpsUtil', ext:'jar'
     implementation name:'RewardCentral', ext:'jar'
     implementation name:'TripPricer', ext:'jar'
 
-    testImplementation 'junit:junit:4.13.2'
-    implementation 'com.jsoniter:jsoniter:0.9.23'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.6.7'
+    testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '4.4.0'
+
 }
 
+test {
+    useJUnitPlatform()
+}
 
 jacoco {
     toolVersion = "0.8.8"
@@ -51,15 +58,9 @@ jacoco {
 
 jacocoTestReport {
     reports {
-        dependsOn test
-    }
-}
-
-jacocoTestReport {
-    reports {
-        xml.enabled true
-        csv.enabled false
-        html.destination file("${buildDir}/jacocoHtml")
+        xml.required = true
+        csv.required = false
+        html.destination file('${buildDir}/jacocoHtml')
     }
 }
 

@@ -27,12 +27,14 @@ import static tourGuide.helper.InternalTestDataSet.tripPricerApiKey;
 @Service
 public class TourGuideService {
 	private final Logger logger = LoggerFactory.getLogger("TourGuideServiceLog");
+
 	private final GpsUtil gpsUtil;
 	private final RewardsService rewardsService;
 	private final RewardCentral rewardCentral;
 	private final TripPricer tripPricer = new TripPricer();
 	public final TrackerService trackerService;
 	public final InternalTestDataSet internalTestDataSet;
+
 	boolean testMode = true;
 	
 	public TourGuideService(InternalTestDataSet internalTestDataSet, GpsUtil gpsUtil, RewardsService rewardsService, RewardCentral rewardCentral) {
