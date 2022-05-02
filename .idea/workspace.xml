@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="596a50e2-715e-4499-b49a-9941a4ed1ce2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/controller/TourGuideControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/dto/GpsUtilDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/.gradle/7.4.2/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/.gradle/7.4.2/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/.gradle/7.4.2/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/.gradle/7.4.2/checksums/md5-checksums.bin" afterDir="false" />
@@ -18,29 +16,33 @@
       <change beforePath="$PROJECT_DIR$/TourGuide/.gradle/7.4.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/.gradle/7.4.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/.gradle/7.4.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/.gradle/7.4.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TourGuide/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/helper/InternalTestHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/helper/InternalTestHelper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/service/RewardsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/service/RewardsService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/service/TourGuideService$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/service/TourGuideService$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/service/TourGuideService.class" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/service/TourGuideService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/user/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/user/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/user/UserPreferences.class" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/user/UserPreferences.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/user/UserReward.class" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/user/UserReward.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TourGuide/build/classes/java/test/tourGuide/TestPerformance.class" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/build/classes/java/test/tourGuide/TestPerformance.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TourGuide/build/classes/java/test/tourGuide/TestRewardsService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TourGuide/build/classes/java/test/tourGuide/TestTourGuideService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/user/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/user/UserPreferences.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/user/UserReward.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/build/classes/java/test/tourGuide/TestPerformance.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TourGuide/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TourGuide/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TourGuide/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/controller/TourGuideController.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/controller/TourGuideController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/dto/NearbyAttractions.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/dto/NearbyAttractionsDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/helper/InternalTestDataSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/helper/InternalTestDataSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/model/Model.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/service/RewardsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/service/RewardsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/service/TourGuideService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/service/TourGuideService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/TestPerformance.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/TestPerformance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/TestRewardsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/service/TestRewardsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/TestTourGuideService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/service/TestTourGuideService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/service/TrackerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/service/TrackerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/user/UserPreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/dto/UserPreferencesDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/user/UserReward.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/dto/UserRewardDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/TestPerformance.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/TestPerformanceIT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/controller/TourGuideControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/controller/TourGuideControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/service/TestRewardsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/integration/IntegrationRewardsTestIT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/service/TestTourGuideService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/integration/IntegrationTourGuideTestIT.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,48 +84,6 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="TourGuide" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="TourGuide" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build setup" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="TourGuide" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="documentation" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="TourGuide" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="help" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="TourGuide" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="ide" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="TourGuide" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="other" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="TourGuide" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="verification" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="TourGuide" type="f1a62948:ProjectNode" />
                 <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
               </path>
               <path>
@@ -141,8 +101,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="AnnotationType" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -180,13 +140,18 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="tourGuide.controller" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/TourGuide/src/main/java/microServices" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="tourGuide.integration" />
+      <recent name="tourGuide.dto" />
       <recent name="tourGuide.service" />
       <recent name="tourGuide.config" />
       <recent name="tourGuide.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.TourGuide [build]">
+  <component name="RunManager" selected="JUnit.IntegrationTourGuideTestIT">
     <configuration name="TourGuide" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="adopt-11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -202,7 +167,7 @@
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/TourGuide" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--scan" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -239,11 +204,69 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="IntegrationRewardsTestIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TourGuide.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tourGuide.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tourGuide.integration" />
+      <option name="MAIN_CLASS_NAME" value="tourGuide.integration.IntegrationRewardsTestIT" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IntegrationTourGuideTestIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TourGuide.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tourGuide.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tourGuide.integration" />
+      <option name="MAIN_CLASS_NAME" value="tourGuide.integration.IntegrationTourGuideTestIT" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IntegrationTourGuideTestIT.getUserLocation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TourGuide.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tourGuide.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="tourGuide.integration" />
+      <option name="MAIN_CLASS_NAME" value="tourGuide.integration.IntegrationTourGuideTestIT" />
+      <option name="METHOD_NAME" value="getUserLocation" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.TourGuide" />
       <item itemvalue="Gradle.TourGuide [build]" />
       <item itemvalue="Gradle.TourGuide [:test]" />
+      <item itemvalue="JUnit.IntegrationRewardsTestIT" />
+      <item itemvalue="JUnit.IntegrationTourGuideTestIT" />
+      <item itemvalue="JUnit.IntegrationTourGuideTestIT.getUserLocation" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.IntegrationTourGuideTestIT" />
+        <item itemvalue="JUnit.IntegrationTourGuideTestIT.getUserLocation" />
+        <item itemvalue="JUnit.IntegrationRewardsTestIT" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -267,7 +290,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="feature/PerformanceTests" />
+                        <option value="develop" />
                       </list>
                     </value>
                   </entry>
@@ -298,21 +321,9 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.NumberFormatException" package="java.lang" />
-          <option name="timeStamp" value="6" />
-        </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/service/TestRewardsService.java</url>
-          <line>35</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo parentTag="tourGuide.user.User" memberName="userRewards" />
         <PinnedItemInfo parentTag="tourGuide.user.User" memberName="visitedLocations" />
       </pinned-members>
     </pin-to-top-manager>
@@ -324,7 +335,7 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/JavaPathENProject8$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1650457404997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/JavaPathENProject8$TourGuide__test_.ic" NAME="TourGuide [test] Coverage Results" MODIFIED="1651159472792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/JavaPathENProject8$TourGuide___test_.ic" NAME="TourGuide [:test] Coverage Results" MODIFIED="1651325172687" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/JavaPathENProject8$TourGuide___test_.ic" NAME="TourGuide [:test] Coverage Results" MODIFIED="1651413801477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/JavaPathENProject8$TourGuide.ic" NAME="TourGuide Coverage Results" MODIFIED="1651049703457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

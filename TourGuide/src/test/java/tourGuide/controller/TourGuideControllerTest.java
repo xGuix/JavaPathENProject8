@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
-import tourGuide.dto.NearbyAttractions;
+import tourGuide.dto.NearbyAttractionsDto;
 import tourGuide.service.TourGuideService;
 
 import java.util.ArrayList;
@@ -53,10 +53,10 @@ public class TourGuideControllerTest {
         Location location = new Location(33.817595D,-117.922008D);
         Date date = new Date();
         VisitedLocation visitedLocation = new VisitedLocation(UUID.randomUUID(),location, date);
-        List<NearbyAttractions> nearbyAttractionsList = new ArrayList<>();
+        List<NearbyAttractionsDto> nearbyAttractionsDtoList = new ArrayList<>();
         //When
         Mockito.when(tourGuideService.getUserLocation(tourGuideService.getUser(userName))).thenReturn(visitedLocation);
-        Mockito.when(tourGuideService.getNearByAttractions(visitedLocation)).thenReturn(nearbyAttractionsList);
+        Mockito.when(tourGuideService.getNearByAttractions(visitedLocation)).thenReturn(nearbyAttractionsDtoList);
         //Then
         mockMvc.perform(get("/getNearbyAttractions").param("userName", userName)).andExpect(status().isOk());
     }

@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import gpsUtil.location.VisitedLocation;
-import tourGuide.dto.NearbyAttractions;
+import tourGuide.dto.NearbyAttractionsDto;
 import tourGuide.service.TourGuideService;
-import tourGuide.user.User;
-import tourGuide.user.UserReward;
+import tourGuide.dto.UserDto;
+import tourGuide.dto.UserRewardDto;
 import tripPricer.Provider;
 
 /**
@@ -41,7 +41,7 @@ public class TourGuideController {
      * @return userList List of all users
      */
     @RequestMapping("/allUsers")
-    private List<User> getAllUsers() {
+    private List<UserDto> getAllUsers() {
         logger.info("Search list of all users");
         return tourGuideService.getAllUsers();
     }
@@ -54,7 +54,7 @@ public class TourGuideController {
      * @return userName User userName
      */
     @RequestMapping("/getUser")
-    private User getUser(String userName) {
+    private UserDto getUser(String userName) {
         logger.info("Search user with username: {}", userName);
         return tourGuideService.getUser(userName);
     }
@@ -92,9 +92,9 @@ public class TourGuideController {
      * @return userAttractionList List of the closest attraction
      */
     @RequestMapping("/getNearbyAttractions")
-    public List<NearbyAttractions> getNearbyAttractions(@RequestParam String userName) {
+    public List<NearbyAttractionsDto> getNearbyAttractions(@RequestParam String userName) {
     	VisitedLocation visitedLocation = tourGuideService.getUserLocation(getUser(userName));
-        List<NearbyAttractions> userAttractionList = tourGuideService.getNearByAttractions(visitedLocation);
+        List<NearbyAttractionsDto> userAttractionList = tourGuideService.getNearByAttractions(visitedLocation);
         logger.info("Get nearby attractions with username: {}", userName);
     	return userAttractionList;
     }
@@ -107,10 +107,10 @@ public class TourGuideController {
      * @return providers List of providers
      */
     @RequestMapping("/getRewards") 
-    public List<UserReward> getRewards(@RequestParam String userName) {
-        List<UserReward> userRewardList = tourGuideService.getUserRewards(getUser(userName));
+    public List<UserRewardDto> getRewards(@RequestParam String userName) {
+        List<UserRewardDto> userRewardDtoList = tourGuideService.getUserRewards(getUser(userName));
         logger.info("Get user reward with username: {}", userName);
-    	return userRewardList;
+    	return userRewardDtoList;
     }
 
     /**
@@ -122,8 +122,8 @@ public class TourGuideController {
     @RequestMapping("/getAllCurrentLocations")
     public Map<UUID, Location> getAllCurrentLocations() {
         Map<UUID, Location> userLocationMap = new HashMap<>();
-        List<User> usersList = tourGuideService.getAllUsers();
-        for (User users: usersList){
+        List<UserDto> usersList = tourGuideService.getAllUsers();
+        for (UserDto users: usersList){
             VisitedLocation userVisitedLocation = getLocation(users.getUserName());
             userLocationMap.put(userVisitedLocation.userId, userVisitedLocation.location);
         }

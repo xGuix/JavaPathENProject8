@@ -7,12 +7,13 @@ import org.apache.commons.lang3.time.StopWatch;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 import rewardCentral.RewardCentral;
 import tourGuide.helper.InternalTestDataSet;
 import tourGuide.helper.InternalTestHelper;
 import tourGuide.service.RewardsService;
 import tourGuide.service.TourGuideService;
-import tourGuide.user.User;
+import tourGuide.dto.UserDto;
 
 import java.util.Date;
 import java.util.List;
@@ -20,10 +21,10 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@SpringBootTest
+public class TestPerformanceIT {
 
-public class TestPerformance {
-
-	private static final Logger logger = LogManager.getLogger("TourGuidePerformanceLog");
+	static final Logger logger = LogManager.getLogger("TourGuidePerformanceLog");
 	/*
 	 * A note on performance improvements:
 	 *     
@@ -52,15 +53,15 @@ public class TestPerformance {
 		// Users should be incremented up to 100,000, and test finishes within 15 minutes
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
 		InternalTestHelper.setInternalUserNumber(10);
-		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, gpsUtil, rewardsService, rewardCentral);
+		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, rewardsService, rewardCentral);
 
-		List<User> allUsers;
-		allUsers = tourGuideService.getAllUsers();
+		List<UserDto> allUsersDto;
+		allUsersDto = tourGuideService.getAllUsers();
 		
 	    StopWatch stopWatch = new StopWatch();
 		stopWatch.start();
-		for(User user : allUsers) {
-			tourGuideService.trackUserLocation(user);
+		for(UserDto userDto : allUsersDto) {
+			tourGuideService.trackUserLocation(userDto);
 		}
 		stopWatch.stop();
 		tourGuideService.trackerService.stopTracking();
@@ -79,19 +80,19 @@ public class TestPerformance {
 		InternalTestHelper.setInternalUserNumber(10);
 		StopWatch stopWatch = new StopWatch();
 		stopWatch.start();
-		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet,gpsUtil, rewardsService, rewardCentral);
+		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, rewardsService, rewardCentral);
 		
 	    Attraction attraction = gpsUtil.getAttractions().get(0);
-		List<User> allUsers;
-		allUsers = tourGuideService.getAllUsers();
-		allUsers.forEach(u -> u.addToVisitedLocations(new VisitedLocation(u.getUserId(), attraction, new Date())));
+		List<UserDto> allUsersDto;
+		allUsersDto = tourGuideService.getAllUsers();
+		allUsersDto.forEach(u -> u.addToVisitedLocations(new VisitedLocation(u.getUserId(), attraction, new Date())));
 
-		for (User u : allUsers) {
+		for (UserDto u : allUsersDto) {
 			rewardsService.calculateRewards(u);
 		}
 
-		for(User user : allUsers) {
-			assertTrue(user.getUserRewards().size() > 0);
+		for(UserDto userDto : allUsersDto) {
+			assertTrue(userDto.getUserRewards().size() > 0);
 		}
 		stopWatch.stop();
 		tourGuideService.trackerService.stopTracking();

@@ -1,4 +1,4 @@
-package tourGuide.user;
+package tourGuide.dto;
 
 import gpsUtil.location.Attraction;
 import gpsUtil.location.VisitedLocation;
@@ -6,13 +6,13 @@ import gpsUtil.location.VisitedLocation;
 /**
  * User Reward Model
  */
-public class UserReward {
+public class UserRewardDto {
 
 	public final VisitedLocation visitedLocation;
 	public final Attraction attraction;
 	private int rewardPoints;
 
-	public UserReward(VisitedLocation visitedLocation, Attraction attraction, int rewardPoints) {
+	public UserRewardDto(VisitedLocation visitedLocation, Attraction attraction, int rewardPoints) {
 		this.visitedLocation = visitedLocation;
 		this.attraction = attraction;
 		this.rewardPoints = rewardPoints;

@@ -1,4 +1,4 @@
-package tourGuide.service;
+package tourGuide.integration;
 
 import java.util.List;
 import java.util.UUID;
@@ -6,32 +6,36 @@ import java.util.UUID;
 import gpsUtil.GpsUtil;
 import gpsUtil.location.VisitedLocation;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 import rewardCentral.RewardCentral;
+import tourGuide.dto.NearbyAttractionsDto;
+import tourGuide.dto.UserDto;
+import tourGuide.service.RewardsService;
+import tourGuide.service.TourGuideService;
 import tripPricer.Provider;
 
-import tourGuide.dto.NearbyAttractions;
 import tourGuide.helper.InternalTestDataSet;
 import tourGuide.helper.InternalTestHelper;
-import tourGuide.user.User;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TestTourGuideService {
+@SpringBootTest
+public class IntegrationTourGuideTestIT {
 
 	@Test
-	public void getUserLocation() {
+	public void getUserLocation() throws NumberFormatException {
 		GpsUtil gpsUtil = new GpsUtil();
 		RewardCentral rewardCentral = new RewardCentral();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
 		InternalTestHelper.setInternalUserNumber(10);
-		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, gpsUtil, rewardsService, rewardCentral);
+		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, rewardsService, rewardCentral);
 		
-		User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
-		VisitedLocation visitedLocation = tourGuideService.trackUserLocation(user);
+		UserDto userDto = new UserDto(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
+		VisitedLocation visitedLocation = tourGuideService.trackUserLocation(userDto);
 		tourGuideService.trackerService.stopTracking();
-		assertEquals(visitedLocation.userId, user.getUserId());
+		assertEquals(visitedLocation.userId, userDto.getUserId());
 	}
 	
 	@Test
@@ -41,21 +45,21 @@ public class TestTourGuideService {
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
 		InternalTestHelper.setInternalUserNumber(10);
-		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, gpsUtil, rewardsService, rewardCentral);
+		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, rewardsService, rewardCentral);
 		
-		User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
-		User user2 = new User(UUID.randomUUID(), "jon2", "000", "jon2@tourGuide.com");
+		UserDto userDto = new UserDto(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
+		UserDto userDto2 = new UserDto(UUID.randomUUID(), "jon2", "000", "jon2@tourGuide.com");
 
-		tourGuideService.addUser(user);
-		tourGuideService.addUser(user2);
+		tourGuideService.addUser(userDto);
+		tourGuideService.addUser(userDto2);
 		
-		User retriedUser = tourGuideService.getUser(user.getUserName());
-		User retriedUser2 = tourGuideService.getUser(user2.getUserName());
+		UserDto retriedUserDto = tourGuideService.getUser(userDto.getUserName());
+		UserDto retriedUser2Dto = tourGuideService.getUser(userDto2.getUserName());
 
 		tourGuideService.trackerService.stopTracking();
 		
-		assertEquals(user, retriedUser);
-		assertEquals(user2, retriedUser2);
+		assertEquals(userDto, retriedUserDto);
+		assertEquals(userDto2, retriedUser2Dto);
 	}
 	
 	@Test
@@ -65,20 +69,20 @@ public class TestTourGuideService {
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
 		InternalTestHelper.setInternalUserNumber(10);
-		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, gpsUtil, rewardsService, rewardCentral);
+		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, rewardsService, rewardCentral);
 		
-		User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
-		User user2 = new User(UUID.randomUUID(), "jon2", "000", "jon2@tourGuide.com");
+		UserDto userDto = new UserDto(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
+		UserDto userDto2 = new UserDto(UUID.randomUUID(), "jon2", "000", "jon2@tourGuide.com");
 
-		tourGuideService.addUser(user);
-		tourGuideService.addUser(user2);
+		tourGuideService.addUser(userDto);
+		tourGuideService.addUser(userDto2);
 		
-		List<User> allUsers = tourGuideService.getAllUsers();
+		List<UserDto> allUsersDto = tourGuideService.getAllUsers();
 
 		tourGuideService.trackerService.stopTracking();
 		
-		assertTrue(allUsers.contains(user));
-		assertTrue(allUsers.contains(user2));
+		assertTrue(allUsersDto.contains(userDto));
+		assertTrue(allUsersDto.contains(userDto2));
 	}
 	
 	@Test
@@ -88,14 +92,15 @@ public class TestTourGuideService {
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
 		InternalTestHelper.setInternalUserNumber(10);
-		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, gpsUtil, rewardsService, rewardCentral);
+		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, rewardsService, rewardCentral);
 		
-		User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
-		VisitedLocation visitedLocation = tourGuideService.getUserLocation(user);
+		UserDto userDto = new UserDto(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
+		VisitedLocation visitedLocation;
+		visitedLocation = tourGuideService.getUserLocation(userDto);
 		
 		tourGuideService.trackerService.stopTracking();
 		
-		assertEquals(user.getUserId(), visitedLocation.userId);
+		assertEquals(userDto.getUserId(), visitedLocation.userId);
 	}
 
 	@Test
@@ -105,12 +110,13 @@ public class TestTourGuideService {
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
 		InternalTestHelper.setInternalUserNumber(10);
-		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, gpsUtil, rewardsService, rewardCentral);
+		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, rewardsService, rewardCentral);
 		
-		User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
-		VisitedLocation visitedLocation = tourGuideService.trackUserLocation(user);
+		UserDto userDto = new UserDto(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
+		VisitedLocation visitedLocation;
+		visitedLocation = tourGuideService.trackUserLocation(userDto);
 		
-		List<NearbyAttractions> attractions = tourGuideService.getNearByAttractions(visitedLocation);
+		List<NearbyAttractionsDto> attractions = tourGuideService.getNearByAttractions(visitedLocation);
 		
 		tourGuideService.trackerService.stopTracking();
 		
@@ -123,11 +129,11 @@ public class TestTourGuideService {
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
 		InternalTestHelper.setInternalUserNumber(10);
-		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, gpsUtil, rewardsService, rewardCentral);
+		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, rewardsService, rewardCentral);
 		
-		User user = new User(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
+		UserDto userDto = new UserDto(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
 
-		List<Provider> providers = tourGuideService.getTripDeals(user);
+		List<Provider> providers = tourGuideService.getTripDeals(userDto);
 		
 		tourGuideService.trackerService.stopTracking();
 		

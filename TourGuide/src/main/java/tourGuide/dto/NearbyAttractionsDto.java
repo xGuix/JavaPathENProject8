@@ -5,16 +5,16 @@ import gpsUtil.location.Location;
 
 import java.util.Objects;
 
-public class NearbyAttractions {
+public class NearbyAttractionsDto {
     private Attraction attraction;
     private Location userLocation;
     private Double distance;
     private Integer rewardPoints;
 
-    public NearbyAttractions() {
+    public NearbyAttractionsDto() {
     }
 
-    public NearbyAttractions(Attraction attraction, Location userLocation, Double distance, Integer rewardPoints) {
+    public NearbyAttractionsDto(Attraction attraction, Location userLocation, Double distance, Integer rewardPoints) {
         this.attraction = attraction;
         this.userLocation = userLocation;
         this.distance = distance;
@@ -57,7 +57,7 @@ public class NearbyAttractions {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        NearbyAttractions that = (NearbyAttractions) o;
+        NearbyAttractionsDto that = (NearbyAttractionsDto) o;
         return Objects.equals(attraction, that.attraction) &&
                 Objects.equals(userLocation, that.userLocation) &&
                 Objects.equals(distance, that.distance) &&

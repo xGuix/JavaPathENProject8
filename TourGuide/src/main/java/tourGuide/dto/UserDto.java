@@ -1,4 +1,4 @@
-package tourGuide.user;
+package tourGuide.dto;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,24 +11,24 @@ import tripPricer.Provider;
 /**
  * User Model
  */
-public class User {
+public class UserDto {
 	private final UUID userId;
 	private final String userName;
 	private String phoneNumber;
 	private String emailAddress;
 	private Date latestLocationTimestamp;
-	private List<VisitedLocation> visitedLocations = new ArrayList<>();
-	private List<UserReward> userRewards = new ArrayList<>();
-	private UserPreferences userPreferences = new UserPreferences();
+	private final List<VisitedLocation> visitedLocations = new ArrayList<>();
+	private final List<UserRewardDto> userRewardsDto = new ArrayList<>();
+	private UserPreferencesDto userPreferencesDto = new UserPreferencesDto();
 	private List<Provider> tripDeals = new ArrayList<>();
 
 	/**
 	 * Default constructor
 	 *
-	 * @param userId
-	 * @param userName
+	 * @param userId User id
+	 * @param userName User name
 	 */
-	public User(UUID userId, String userName) {
+	public UserDto(UUID userId, String userName) {
 		this.userId = userId;
 		this.userName = userName;
 
@@ -37,12 +37,12 @@ public class User {
 	/**
 	 * Full constructor
 	 *
-	 * @param userId
-	 * @param userName
-	 * @param phoneNumber
-	 * @param emailAddress
+	 * @param userId User id
+	 * @param userName User name
+	 * @param phoneNumber User phone number
+	 * @param emailAddress User email
 	 */
-	public User(UUID userId, String userName, String phoneNumber, String emailAddress) {
+	public UserDto(UUID userId, String userName, String phoneNumber, String emailAddress) {
 		this.userId = userId;
 		this.userName = userName;
 		this.phoneNumber = phoneNumber;
@@ -93,22 +93,22 @@ public class User {
 		visitedLocations.clear();
 	}
 	
-	public void addUserReward(UserReward userReward) {
-		if(userRewards.stream().filter(r -> !r.attraction.attractionName.equals(userReward.attraction)).count() == 0) {
-			userRewards.add(userReward);
+	public void addUserReward(UserRewardDto userRewardDto) {
+		if(userRewardsDto.stream().count() == 0) {
+			userRewardsDto.add(userRewardDto);
 		}
 	}
 	
-	public List<UserReward> getUserRewards() {
-		return userRewards;
+	public List<UserRewardDto> getUserRewards() {
+		return userRewardsDto;
 	}
 	
-	public UserPreferences getUserPreferences() {
-		return userPreferences;
+	public UserPreferencesDto getUserPreferences() {
+		return userPreferencesDto;
 	}
 	
-	public void setUserPreferences(UserPreferences userPreferences) {
-		this.userPreferences = userPreferences;
+	public void setUserPreferences(UserPreferencesDto userPreferencesDto) {
+		this.userPreferencesDto = userPreferencesDto;
 	}
 
 	public VisitedLocation getLastVisitedLocation() {

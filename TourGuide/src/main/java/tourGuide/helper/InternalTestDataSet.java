@@ -5,7 +5,7 @@ import gpsUtil.location.VisitedLocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-import tourGuide.user.User;
+import tourGuide.dto.UserDto;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -17,23 +17,23 @@ public class InternalTestDataSet {
     public final Logger logger = LoggerFactory.getLogger(InternalTestDataSet.class);
     public static final String tripPricerApiKey = "test-server-api-key";
     // Database connection will be used for external users, but for testing purposes internal users are provided and stored in memory
-    public final Map<String, User> internalUserMap = new HashMap<>();
+    public final Map<String, UserDto> internalUserMap = new HashMap<>();
     public void initializeInternalUsers() {
         IntStream.range(0, InternalTestHelper.getInternalUserNumber()).forEach(i -> {
             String userName = "internalUser" + i;
             String phone = "000";
             String email = userName + "@tourGuide.com";
-            User user = new User(UUID.randomUUID(), userName, phone, email);
-            generateUserLocationHistory(user);
+            UserDto userDto = new UserDto(UUID.randomUUID(), userName, phone, email);
+            generateUserLocationHistory(userDto);
 
-            internalUserMap.put(userName, user);
+            internalUserMap.put(userName, userDto);
         });
         logger.debug("Created " + InternalTestHelper.getInternalUserNumber() + " internal test users.");
     }
 
-    private void generateUserLocationHistory(User user) {
+    private void generateUserLocationHistory(UserDto userDto) {
         IntStream.range(0, 3).forEach(i-> {
-            user.addToVisitedLocations(new VisitedLocation(user.getUserId(), new Location(generateRandomLatitude(), generateRandomLongitude()), getRandomTime()));
+            userDto.addToVisitedLocations(new VisitedLocation(userDto.getUserId(), new Location(generateRandomLatitude(), generateRandomLongitude()), getRandomTime()));
         });
     }
 

@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.stereotype.Service;
-import tourGuide.user.User;
+import tourGuide.dto.UserDto;
 
 /**
  * Tracker Service
@@ -53,10 +53,10 @@ public class TrackerService extends Thread {
 				break;
 			}
 			
-			List<User> users = tourGuideService.getAllUsers();
-			logger.debug("Begin Tracker. Tracking " + users.size() + " users.");
+			List<UserDto> userDtoList = tourGuideService.getAllUsers();
+			logger.debug("Begin Tracker. Tracking " + userDtoList.size() + " users.");
 			stopWatch.start();
-			users.forEach(u -> tourGuideService.trackUserLocation(u));
+			userDtoList.forEach(tourGuideService::trackUserLocation);
 			stopWatch.stop();
 			logger.debug("Tracker Time Elapsed: " + TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()) + " seconds."); 
 			stopWatch.reset();

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -12,10 +13,11 @@ import gpsUtil.GpsUtil;
 import gpsUtil.location.Attraction;
 import gpsUtil.location.VisitedLocation;
 import rewardCentral.RewardCentral;
-import tourGuide.dto.NearbyAttractions;
+import tourGuide.dto.GpsUtilDto;
+import tourGuide.dto.NearbyAttractionsDto;
 import tourGuide.helper.InternalTestDataSet;
-import tourGuide.user.User;
-import tourGuide.user.UserReward;
+import tourGuide.dto.UserDto;
+import tourGuide.dto.UserRewardDto;
 import tripPricer.Provider;
 import tripPricer.TripPricer;
 
@@ -26,91 +28,86 @@ import static tourGuide.helper.InternalTestDataSet.tripPricerApiKey;
  */
 @Service
 public class TourGuideService {
-	private final Logger logger = LoggerFactory.getLogger("TourGuideServiceLog");
+	static final Logger logger = LoggerFactory.getLogger("TourGuideServiceLog");
 
-	private final GpsUtil gpsUtil;
+	private final GpsUtil gpsUtil = new GpsUtil();
 	private final RewardsService rewardsService;
 	private final RewardCentral rewardCentral;
 	private final TripPricer tripPricer = new TripPricer();
 	public final TrackerService trackerService;
 	public final InternalTestDataSet internalTestDataSet;
 
-	boolean testMode = true;
-	
-	public TourGuideService(InternalTestDataSet internalTestDataSet, GpsUtil gpsUtil, RewardsService rewardsService, RewardCentral rewardCentral) {
+	public TourGuideService(InternalTestDataSet internalTestDataSet, RewardsService rewardsService, RewardCentral rewardCentral) {
 		this.internalTestDataSet = internalTestDataSet;
-		this.gpsUtil = gpsUtil;
 		this.rewardsService = rewardsService;
 		this.rewardCentral = rewardCentral;
 
-		if(testMode) {
-			logger.info("TestMode enabled");
-			logger.debug("Initializing users");
-			internalTestDataSet.initializeInternalUsers();
-			logger.debug("Finished initializing users");
-		}
+		logger.info("TestMode enabled");
+		logger.debug("Initializing users");
+		internalTestDataSet.initializeInternalUsers();
+		logger.debug("Finished initializing users");
 		trackerService = new TrackerService(this);
 		addShutDownHook();
 	}
 	
-	public List<UserReward> getUserRewards(User user) {
-		return user.getUserRewards();
+	public List<UserRewardDto> getUserRewards(UserDto userDto) {
+		return userDto.getUserRewards();
 	}
 	
-	public VisitedLocation getUserLocation(User user) {
+	public VisitedLocation getUserLocation(UserDto userDto) {
 		VisitedLocation visitedLocation;
-		visitedLocation = (user.getVisitedLocations().size() > 0) ?
-			user.getLastVisitedLocation() :
-			trackUserLocation(user);
+		visitedLocation = (userDto.getVisitedLocations().size() > 0) ?
+			userDto.getLastVisitedLocation() :
+			trackUserLocation(userDto);
 		return visitedLocation;
 	}
 
-	public User getUser(String userName) {
+	public UserDto getUser(String userName) {
 		return internalTestDataSet.internalUserMap.get(userName);
 	}
 	
-	public List<User> getAllUsers() {
+	public List<UserDto> getAllUsers() {
 		return internalTestDataSet.internalUserMap.values().stream().collect(Collectors.toList());
 	}
 	
-	public void addUser(User user) {
-		if(!internalTestDataSet.internalUserMap.containsKey(user.getUserName())) {
-			internalTestDataSet.internalUserMap.put(user.getUserName(), user);
+	public void addUser(UserDto userDto) {
+		if(!internalTestDataSet.internalUserMap.containsKey(userDto.getUserName())) {
+			internalTestDataSet.internalUserMap.put(userDto.getUserName(), userDto);
 		}
 	}
 	
-	public List<Provider> getTripDeals(User user) {
+	public List<Provider> getTripDeals(UserDto userDto) {
 		int cumulativeRewardPoints = 0;
-		for (UserReward i : user.getUserRewards()) {
+		for (UserRewardDto i : userDto.getUserRewards()) {
 			int rewardPoints = i.getRewardPoints();
 			cumulativeRewardPoints += rewardPoints;
 		}
-		List<Provider> providers = tripPricer.getPrice(tripPricerApiKey, user.getUserId(), user.getUserPreferences().getNumberOfAdults(), 
-				user.getUserPreferences().getNumberOfChildren(), user.getUserPreferences().getTripDuration(), cumulativeRewardPoints);
-		user.setTripDeals(providers);
+		List<Provider> providers = tripPricer.getPrice(tripPricerApiKey, userDto.getUserId(), userDto.getUserPreferences().getNumberOfAdults(),
+				userDto.getUserPreferences().getNumberOfChildren(), userDto.getUserPreferences().getTripDuration(), cumulativeRewardPoints);
+		userDto.setTripDeals(providers);
 		return providers;
 	}
 	
-	public VisitedLocation trackUserLocation(User user) {
-		VisitedLocation visitedLocation = gpsUtil.getUserLocation(user.getUserId());
-		user.addToVisitedLocations(visitedLocation);
-		rewardsService.calculateRewards(user);
+	public VisitedLocation trackUserLocation(@NotNull UserDto userDto) {
+		VisitedLocation visitedLocation = gpsUtil.getUserLocation(userDto.getUserId());
+		userDto.addToVisitedLocations(visitedLocation);
+		rewardsService.calculateRewards(userDto);
 		return visitedLocation;
 	}
 
-	public List<NearbyAttractions> getNearByAttractions(VisitedLocation visitedLocation) {
-		List<NearbyAttractions> nearbyAttractions = new ArrayList<>();
+	public List<NearbyAttractionsDto> getNearByAttractions(VisitedLocation visitedLocation) {
+		List<NearbyAttractionsDto> nearbyAttractionsListDto = new ArrayList<>();
 		for(Attraction attraction : gpsUtil.getAttractions()) {
 			if(rewardsService.isWithinAttractionProximity(attraction, visitedLocation.location)) {
-				NearbyAttractions nearBy = new NearbyAttractions();
+				NearbyAttractionsDto nearBy = new NearbyAttractionsDto();
 				nearBy.setAttraction(attraction);
 				nearBy.setUserLocation(visitedLocation.location);
 				nearBy.setDistance(rewardsService.getDistance(attraction, visitedLocation.location));
 				nearBy.setRewardPoints(rewardCentral.getAttractionRewardPoints(attraction.attractionId, visitedLocation.userId));
-				nearbyAttractions.add(nearBy);
+				nearbyAttractionsListDto.add(nearBy);
 			}
 		}
-		return nearbyAttractions;
+		return nearbyAttractionsListDto;
 	}
 	
 	private void addShutDownHook() {

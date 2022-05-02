@@ -1,4 +1,4 @@
-package tourGuide.user;
+package tourGuide.dto;
 
 import javax.money.CurrencyUnit;
 import javax.money.Monetary;
@@ -8,7 +8,7 @@ import org.javamoney.moneta.Money;
 /**
  * User Preferences Model
  */
-public class UserPreferences {
+public class UserPreferencesDto {
 	
 	private int attractionProximity = Integer.MAX_VALUE;
 	private final CurrencyUnit currency = Monetary.getCurrency("USD");
@@ -19,7 +19,7 @@ public class UserPreferences {
 	private int numberOfAdults = 1;
 	private int numberOfChildren = 0;
 	
-	public UserPreferences() {
+	public UserPreferencesDto() {
 	}
 
 	public void setAttractionProximity(int attractionProximity) {
