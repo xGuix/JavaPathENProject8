@@ -1,1 +1,3 @@
 rootProject.name = 'TourGuide'
+include 'GpsUtilService'
+
