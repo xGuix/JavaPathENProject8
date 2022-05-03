@@ -12,6 +12,8 @@
           <set>
             <option value="$PROJECT_DIR$/TourGuide" />
             <option value="$PROJECT_DIR$/TourGuide/GpsUtilService" />
+            <option value="$PROJECT_DIR$/TourGuide/RewardCentralService" />
+            <option value="$PROJECT_DIR$/TourGuide/TripPricer" />
           </set>
         </option>
       </GradleProjectSettings>
