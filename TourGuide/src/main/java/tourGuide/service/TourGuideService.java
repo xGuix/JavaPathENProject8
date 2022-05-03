@@ -2,9 +2,8 @@ package tourGuide.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Locale;
 
-import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -13,7 +12,6 @@ import gpsUtil.GpsUtil;
 import gpsUtil.location.Attraction;
 import gpsUtil.location.VisitedLocation;
 import rewardCentral.RewardCentral;
-import tourGuide.dto.GpsUtilDto;
 import tourGuide.dto.NearbyAttractionsDto;
 import tourGuide.helper.InternalTestDataSet;
 import tourGuide.dto.UserDto;
@@ -30,15 +28,16 @@ import static tourGuide.helper.InternalTestDataSet.tripPricerApiKey;
 public class TourGuideService {
 	static final Logger logger = LoggerFactory.getLogger("TourGuideServiceLog");
 
-	private final GpsUtil gpsUtil = new GpsUtil();
+	private final GpsUtil gpsUtil;
 	private final RewardsService rewardsService;
 	private final RewardCentral rewardCentral;
 	private final TripPricer tripPricer = new TripPricer();
 	public final TrackerService trackerService;
 	public final InternalTestDataSet internalTestDataSet;
 
-	public TourGuideService(InternalTestDataSet internalTestDataSet, RewardsService rewardsService, RewardCentral rewardCentral) {
+	public TourGuideService(InternalTestDataSet internalTestDataSet,GpsUtil gpsUtil , RewardsService rewardsService, RewardCentral rewardCentral) {
 		this.internalTestDataSet = internalTestDataSet;
+		this.gpsUtil = gpsUtil;
 		this.rewardsService = rewardsService;
 		this.rewardCentral = rewardCentral;
 
@@ -67,7 +66,7 @@ public class TourGuideService {
 	}
 	
 	public List<UserDto> getAllUsers() {
-		return internalTestDataSet.internalUserMap.values().stream().collect(Collectors.toList());
+		return new ArrayList<>(internalTestDataSet.internalUserMap.values());
 	}
 	
 	public void addUser(UserDto userDto) {
@@ -88,7 +87,8 @@ public class TourGuideService {
 		return providers;
 	}
 	
-	public VisitedLocation trackUserLocation(@NotNull UserDto userDto) {
+	public VisitedLocation trackUserLocation(UserDto userDto) {
+		Locale.setDefault(Locale.US);
 		VisitedLocation visitedLocation = gpsUtil.getUserLocation(userDto.getUserId());
 		userDto.addToVisitedLocations(visitedLocation);
 		rewardsService.calculateRewards(userDto);

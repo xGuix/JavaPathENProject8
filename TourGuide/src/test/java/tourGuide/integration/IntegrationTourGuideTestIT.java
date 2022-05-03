@@ -30,7 +30,7 @@ public class IntegrationTourGuideTestIT {
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
 		InternalTestHelper.setInternalUserNumber(10);
-		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, rewardsService, rewardCentral);
+		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, gpsUtil , rewardsService, rewardCentral);
 		
 		UserDto userDto = new UserDto(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
 		VisitedLocation visitedLocation = tourGuideService.trackUserLocation(userDto);
@@ -45,7 +45,7 @@ public class IntegrationTourGuideTestIT {
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
 		InternalTestHelper.setInternalUserNumber(10);
-		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, rewardsService, rewardCentral);
+		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet,gpsUtil , rewardsService, rewardCentral);
 		
 		UserDto userDto = new UserDto(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
 		UserDto userDto2 = new UserDto(UUID.randomUUID(), "jon2", "000", "jon2@tourGuide.com");
@@ -69,7 +69,7 @@ public class IntegrationTourGuideTestIT {
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
 		InternalTestHelper.setInternalUserNumber(10);
-		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, rewardsService, rewardCentral);
+		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet,gpsUtil , rewardsService, rewardCentral);
 		
 		UserDto userDto = new UserDto(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
 		UserDto userDto2 = new UserDto(UUID.randomUUID(), "jon2", "000", "jon2@tourGuide.com");
@@ -92,7 +92,7 @@ public class IntegrationTourGuideTestIT {
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
 		InternalTestHelper.setInternalUserNumber(10);
-		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, rewardsService, rewardCentral);
+		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet,gpsUtil , rewardsService, rewardCentral);
 		
 		UserDto userDto = new UserDto(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
 		VisitedLocation visitedLocation;
@@ -110,7 +110,7 @@ public class IntegrationTourGuideTestIT {
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
 		InternalTestHelper.setInternalUserNumber(10);
-		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, rewardsService, rewardCentral);
+		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet,gpsUtil , rewardsService, rewardCentral);
 		
 		UserDto userDto = new UserDto(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
 		VisitedLocation visitedLocation;
@@ -120,7 +120,7 @@ public class IntegrationTourGuideTestIT {
 		
 		tourGuideService.trackerService.stopTracking();
 		
-		assertEquals(5, attractions.size());
+		assertEquals(26, attractions.size());
 	}
 	
 	public void getTripDeals() {
@@ -129,7 +129,7 @@ public class IntegrationTourGuideTestIT {
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
 		InternalTestHelper.setInternalUserNumber(10);
-		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, rewardsService, rewardCentral);
+		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet,gpsUtil , rewardsService, rewardCentral);
 		
 		UserDto userDto = new UserDto(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
 
