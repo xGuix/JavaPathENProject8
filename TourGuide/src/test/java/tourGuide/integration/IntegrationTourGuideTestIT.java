@@ -120,7 +120,7 @@ public class IntegrationTourGuideTestIT {
 		
 		tourGuideService.trackerService.stopTracking();
 		
-		assertEquals(26, attractions.size());
+		assertEquals(gpsUtil.getAttractions().size(), attractions.size());
 	}
 	
 	public void getTripDeals() {

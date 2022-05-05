@@ -25,4 +25,12 @@ public class UserRewardDto {
 	public void setRewardPoints(int rewardPoints) {
 		this.rewardPoints = rewardPoints;
 	}
+
+	public VisitedLocation getVisitedLocation() {
+		return visitedLocation;
+	}
+
+	public Attraction getAttraction() {
+		return attraction;
+	}
 }

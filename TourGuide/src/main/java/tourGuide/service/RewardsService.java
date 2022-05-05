@@ -1,6 +1,8 @@
 package tourGuide.service;
 
+import java.net.URISyntaxException;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.springframework.stereotype.Service;
 
@@ -39,27 +41,23 @@ public class RewardsService {
 		proximityBuffer = defaultProximityBuffer;
 	}
 	
-	public void calculateRewards(UserDto userDto) {
+	public List<UserRewardDto> calculateRewards(UserDto userDto) {
 		List<VisitedLocation> userLocations = userDto.getVisitedLocations();
 		List<Attraction> attractions = gpsUtil.getAttractions();
-		
-		for(VisitedLocation visitedLocation : userLocations) {
-			for(Attraction attraction : attractions) {
-				long count = 0L;
-				for (UserRewardDto r : userDto.getUserRewards()) {
-					if (r.attraction.attractionName.equals(attraction.attractionName)) {
-						count++;
+		List<VisitedLocation> userLocationsNew = new CopyOnWriteArrayList<VisitedLocation>(userLocations);
+
+		for (VisitedLocation visitedLocation : userLocationsNew) {
+			attractions.forEach(a -> {
+				if (userDto.getUserRewards().stream().noneMatch(r -> r.getAttraction().attractionName.equals(a.attractionName))) {
+					if (nearAttraction(visitedLocation, a)) {
+						userDto.getUserRewards().add(new UserRewardDto(visitedLocation, a, getRewardPoints(a, userDto)));
 					}
 				}
-				if(count == 0) {
-					if(nearAttraction(visitedLocation, attraction)) {
-						userDto.addUserReward(new UserRewardDto(visitedLocation, attraction, getRewardPoints(attraction, userDto)));
-					}
-				}
-			}
+			});
 		}
+		return userDto.getUserRewards();
 	}
-	
+
 	public boolean isWithinAttractionProximity(Attraction attraction, Location location) {
 		return !(getDistance(attraction, location) > attractionProximityRange);
 	}
