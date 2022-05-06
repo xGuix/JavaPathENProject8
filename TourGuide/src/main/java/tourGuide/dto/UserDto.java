@@ -122,4 +122,8 @@ public class UserDto {
 	public List<Provider> getTripDeals() {
 		return tripDeals;
 	}
+
+	public void clearRewards() {
+		userRewardsDto.clear();
+	}
 }

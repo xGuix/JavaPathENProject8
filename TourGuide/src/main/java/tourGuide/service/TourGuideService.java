@@ -28,14 +28,14 @@ import static tourGuide.helper.InternalTestDataSet.tripPricerApiKey;
 public class TourGuideService {
 	static final Logger logger = LoggerFactory.getLogger("TourGuideServiceLog");
 
-	private final GpsUtil gpsUtil;
-	private final RewardsService rewardsService;
-	private final RewardCentral rewardCentral;
-	private final TripPricer tripPricer = new TripPricer();
-	public final TrackerService trackerService;
-	public final InternalTestDataSet internalTestDataSet;
+	private GpsUtil gpsUtil;
+	private RewardsService rewardsService;
+	private RewardCentral rewardCentral;
+	private TripPricer tripPricer = new TripPricer();
+	public TrackerService trackerService;
+	public InternalTestDataSet internalTestDataSet;
 
-	public TourGuideService(InternalTestDataSet internalTestDataSet,GpsUtil gpsUtil , RewardsService rewardsService, RewardCentral rewardCentral) {
+	public TourGuideService(InternalTestDataSet internalTestDataSet, GpsUtil gpsUtil , RewardsService rewardsService, RewardCentral rewardCentral) {
 		this.internalTestDataSet = internalTestDataSet;
 		this.gpsUtil = gpsUtil;
 		this.rewardsService = rewardsService;
@@ -48,7 +48,7 @@ public class TourGuideService {
 		trackerService = new TrackerService(this);
 		addShutDownHook();
 	}
-	
+
 	public List<UserRewardDto> getUserRewards(UserDto userDto) {
 		return userDto.getUserRewards();
 	}

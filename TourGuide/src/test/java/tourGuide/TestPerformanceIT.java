@@ -49,7 +49,7 @@ public class TestPerformanceIT {
 	public void highVolumeTrackLocation() {
 		GpsUtil gpsUtil = new GpsUtil();
 		RewardCentral rewardCentral = new RewardCentral();
-		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
+		RewardsService rewardsService = new RewardsService(gpsUtil, rewardCentral);
 		// Users should be incremented up to 100,000, and test finishes within 15 minutes
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
 		InternalTestHelper.setInternalUserNumber(100);
@@ -74,7 +74,7 @@ public class TestPerformanceIT {
 	public void highVolumeGetRewards() {
 		GpsUtil gpsUtil = new GpsUtil();
 		RewardCentral rewardCentral = new RewardCentral();
-		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
+		RewardsService rewardsService = new RewardsService(gpsUtil, rewardCentral);
 		// Users should be incremented up to 100,000, and test finishes within 20 minutes
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
 		InternalTestHelper.setInternalUserNumber(100);

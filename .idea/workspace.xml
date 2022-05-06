@@ -5,12 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="596a50e2-715e-4499-b49a-9941a4ed1ce2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/service/NewTrackerServTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/.gradle/7.4.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/.gradle/7.4.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/.gradle/7.4.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/.gradle/7.4.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/.gradle/7.4.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/.gradle/7.4.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/.gradle/7.4.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/.gradle/7.4.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/.gradle/7.4.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/.gradle/7.4.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/service/RewardsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/service/RewardsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/service/TourGuideService.class" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/service/TourGuideService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/service/RewardsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/service/RewardsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/service/TourGuideService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/service/TourGuideService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/TestPerformanceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/TestPerformanceIT.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,6 +120,9 @@
       <recent name="tourGuide.config" />
       <recent name="tourGuide.controller" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="tourGuide" />
+    </key>
   </component>
   <component name="RunManager" selected="Gradle.TourGuide [:test]">
     <configuration name="TourGuide" type="Application" factoryName="Application">
@@ -163,66 +177,18 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="IntegrationRewardsTestIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Test2PerformanceIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TourGuide.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tourGuide.integration.*" />
+          <option name="PATTERN" value="tourGuide.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="tourGuide.integration" />
-      <option name="MAIN_CLASS_NAME" value="tourGuide.integration.IntegrationRewardsTestIT" />
+      <option name="PACKAGE_NAME" value="tourGuide" />
+      <option name="MAIN_CLASS_NAME" value="tourGuide.Test2PerformanceIT" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IntegrationRewardsTestIT.nearAllAttractions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="TourGuide.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tourGuide.integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tourGuide.integration" />
-      <option name="MAIN_CLASS_NAME" value="tourGuide.integration.IntegrationRewardsTestIT" />
-      <option name="METHOD_NAME" value="nearAllAttractions" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IntegrationTourGuideTestIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="TourGuide.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tourGuide.integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tourGuide.integration" />
-      <option name="MAIN_CLASS_NAME" value="tourGuide.integration.IntegrationTourGuideTestIT" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IntegrationTourGuideTestIT.getNearbyAttractions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="TourGuide.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tourGuide.integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tourGuide.integration" />
-      <option name="MAIN_CLASS_NAME" value="tourGuide.integration.IntegrationTourGuideTestIT" />
-      <option name="METHOD_NAME" value="getNearbyAttractions" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -237,6 +203,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="tourGuide" />
       <option name="MAIN_CLASS_NAME" value="tourGuide.TestPerformanceIT" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -246,19 +213,13 @@
       <item itemvalue="Application.TourGuide" />
       <item itemvalue="Gradle.TourGuide [build]" />
       <item itemvalue="Gradle.TourGuide [:test]" />
-      <item itemvalue="JUnit.IntegrationRewardsTestIT" />
-      <item itemvalue="JUnit.IntegrationTourGuideTestIT" />
-      <item itemvalue="JUnit.IntegrationTourGuideTestIT.getNearbyAttractions" />
       <item itemvalue="JUnit.TestPerformanceIT" />
-      <item itemvalue="JUnit.IntegrationRewardsTestIT.nearAllAttractions" />
+      <item itemvalue="JUnit.Test2PerformanceIT" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.IntegrationTourGuideTestIT.getNearbyAttractions" />
-        <item itemvalue="JUnit.IntegrationRewardsTestIT.nearAllAttractions" />
-        <item itemvalue="JUnit.IntegrationRewardsTestIT" />
+        <item itemvalue="JUnit.Test2PerformanceIT" />
         <item itemvalue="JUnit.TestPerformanceIT" />
-        <item itemvalue="JUnit.IntegrationTourGuideTestIT" />
       </list>
     </recent_temporary>
   </component>
@@ -332,7 +293,7 @@
       <FILTER>tourGuide.integration.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/JavaPathENProject8$TourGuide__test_.ic" NAME="TourGuide [test] Coverage Results" MODIFIED="1651159472792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/JavaPathENProject8$TourGuide___test_.ic" NAME="TourGuide [:test] Coverage Results" MODIFIED="1651769283810" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/JavaPathENProject8$TourGuide___test_.ic" NAME="TourGuide [:test] Coverage Results" MODIFIED="1651852748935" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/JavaPathENProject8$TourGuide.ic" NAME="TourGuide Coverage Results" MODIFIED="1651049703457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

@@ -1,6 +1,5 @@
 package tourGuide.service;
 
-import java.net.URISyntaxException;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
