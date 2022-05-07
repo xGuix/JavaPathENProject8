@@ -28,7 +28,7 @@ public class InternalTestDataSet {
 
             internalUserMap.put(userName, userDto);
         });
-        logger.debug("Created " + InternalTestHelper.getInternalUserNumber() + " internal test users.");
+        logger.info("Created " + InternalTestHelper.getInternalUserNumber() + " internal test users.");
     }
 
     private void generateUserLocationHistory(UserDto userDto) {

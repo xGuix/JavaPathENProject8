@@ -27,9 +27,9 @@ public class IntegrationRewardsTestIT {
 	public void userGetRewards() {
 		GpsUtil gpsUtil = new GpsUtil();
 		RewardCentral rewardCentral = new RewardCentral();
-		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
+		RewardsService rewardsService = new RewardsService(gpsUtil, rewardCentral);
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
-		InternalTestHelper.setInternalUserNumber(1);
+		InternalTestHelper.setInternalUserNumber(10);
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, gpsUtil, rewardsService, rewardCentral);
 		
 		UserDto userDto = new UserDto(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
@@ -54,7 +54,7 @@ public class IntegrationRewardsTestIT {
 	public void nearAllAttractions() {
 		GpsUtil gpsUtil = new GpsUtil();
 		RewardCentral rewardCentral = new RewardCentral();
-		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
+		RewardsService rewardsService = new RewardsService(gpsUtil, rewardCentral);
 		rewardsService.setProximityBuffer(Integer.MAX_VALUE);
 
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();

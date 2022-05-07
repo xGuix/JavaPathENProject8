@@ -17,7 +17,8 @@ import tourGuide.dto.UserDto;
  */
 @Service
 public class TrackerService extends Thread {
-	private Logger logger = LoggerFactory.getLogger(TrackerService.class);
+
+	private final Logger logger = LoggerFactory.getLogger(TrackerService.class);
 	private static final long trackingPollingInterval = TimeUnit.MINUTES.toSeconds(5);
 	private final ExecutorService executorService = Executors.newSingleThreadExecutor();
 	private final TourGuideService tourGuideService;
@@ -52,13 +53,13 @@ public class TrackerService extends Thread {
 				logger.debug("Tracker stopping");
 				break;
 			}
-			
+
 			List<UserDto> userDtoList = tourGuideService.getAllUsers();
-			logger.debug("Begin Tracker. Tracking " + userDtoList.size() + " users.");
+			logger.debug("Begin Tracker. Tracking {} users.", userDtoList.size());
 			stopWatch.start();
 			userDtoList.forEach(tourGuideService::trackUserLocation);
 			stopWatch.stop();
-			logger.debug("Tracker Time Elapsed: " + TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()) + " seconds."); 
+			logger.debug("Tracker Time Elapsed: {} seconds.", TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()));
 			stopWatch.reset();
 			try {
 				logger.debug("Tracker sleeping");

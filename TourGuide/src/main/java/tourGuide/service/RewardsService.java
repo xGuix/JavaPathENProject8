@@ -2,6 +2,8 @@ package tourGuide.service;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.springframework.stereotype.Service;
 
@@ -10,6 +12,7 @@ import gpsUtil.location.Attraction;
 import gpsUtil.location.Location;
 import gpsUtil.location.VisitedLocation;
 import rewardCentral.RewardCentral;
+import tourGuide.dto.GpsUtilDto;
 import tourGuide.dto.UserDto;
 import tourGuide.dto.UserRewardDto;
 
@@ -18,6 +21,12 @@ import tourGuide.dto.UserRewardDto;
  */
 @Service
 public class RewardsService {
+
+	/**
+	 * @newFixedThreadPool fixe the number of Thread
+	 */
+	private ExecutorService executorService = Executors.newFixedThreadPool(1000);
+
     private static final double STATUTE_MILES_PER_NAUTICAL_MILE = 1.15077945;
 
 	// proximity in miles
@@ -80,5 +89,21 @@ public class RewardsService {
 
         double nauticalMiles = 60 * Math.toDegrees(angle);
 		return STATUTE_MILES_PER_NAUTICAL_MILE * nauticalMiles;
+	}
+
+	/**
+	 * Reset thread pool.
+	 */
+	public void resetThreadPool() {
+		executorService = Executors.newFixedThreadPool(64);
+	}
+
+	/**
+	 * Gets executor service.
+	 *
+	 * @return the executor service
+	 */
+	public ExecutorService getExecutorService() {
+		return executorService;
 	}
 }
