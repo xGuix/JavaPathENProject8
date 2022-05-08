@@ -3,8 +3,6 @@ package tourGuide.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,11 +27,6 @@ import static tourGuide.helper.InternalTestDataSet.tripPricerApiKey;
 @Service
 public class TourGuideService {
 
-	/**
-	 * @newFixedThreadPool fixe the number of Thread
-	 */
-	private final ExecutorService executorService = Executors.newFixedThreadPool(1000);
-
 	static final Logger logger = LoggerFactory.getLogger("TourGuideServiceLog");
 
 	private final GpsUtil gpsUtil;
@@ -55,15 +48,6 @@ public class TourGuideService {
 		logger.debug("Finished initializing users");
 		trackerService = new TrackerService(this);
 		addShutDownHook();
-	}
-
-	/**
-	 * Gets executor service.
-	 *
-	 * @return the executor service
-	 */
-	public ExecutorService getExecutorService() {
-		return executorService;
 	}
 
 	public List<UserRewardDto> getUserRewards(UserDto userDto) {

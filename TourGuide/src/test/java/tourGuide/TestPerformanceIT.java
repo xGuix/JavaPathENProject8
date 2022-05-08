@@ -30,7 +30,7 @@ public class TestPerformanceIT {
 	/**
 	 * Create ThreadPool of 1000
 	 */
-	Executor executor = Executors.newFixedThreadPool(1000);
+	Executor executor = Executors.newFixedThreadPool(2000);
 	/*
 	 * A note on performance improvements:
 	 *     
@@ -62,23 +62,19 @@ public class TestPerformanceIT {
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet,gpsUtil, rewardsService, rewardCentral);
 
 		List<UserDto> allUsersDto;
-		ArrayList<CompletableFuture> completableFutures = new ArrayList<>();
+		ArrayList<CompletableFuture> completableFutures;
+		completableFutures = new ArrayList<>();
 		allUsersDto = tourGuideService.getAllUsers();
 		
 	    StopWatch stopWatch = new StopWatch();
 		stopWatch.start();
 		for(UserDto userDto : allUsersDto) {
-			CompletableFuture completable = CompletableFuture.runAsync(
-					() -> {
-						tourGuideService.trackUserLocation(userDto);
-					}, executor);
+			CompletableFuture completable = CompletableFuture.runAsync(() -> {
+				tourGuideService.trackUserLocation(userDto);
+				}, executor);
 			completableFutures.add(completable);
 		}
-
 		CompletableFuture.allOf(completableFutures.toArray(new CompletableFuture[completableFutures.size()])).join();
-
-		ExecutorService executorService = tourGuideService.getExecutorService();
-		executorService.shutdown();
 
 		tourGuideService.trackerService.stopTracking();
 		stopWatch.stop();
@@ -106,18 +102,12 @@ public class TestPerformanceIT {
 		allUsersDto = tourGuideService.getAllUsers();
 		allUsersDto.forEach(u -> u.addToVisitedLocations(new VisitedLocation(u.getUserId(), attraction, new Date())));
 
-
 		allUsersDto.forEach(u -> {
-			CompletableFuture completable = CompletableFuture.runAsync(
-					() -> {
-						rewardsService.calculateRewards(u);
-					}, executor);
+			CompletableFuture completable = CompletableFuture.runAsync(() -> {
+				rewardsService.calculateRewards(u);
+				}, executor);
 			completableFutures.add(completable);
 		});
-
-		ExecutorService executorService = rewardsService.getExecutorService();
-		executorService.shutdown();
-
 		CompletableFuture.allOf(completableFutures.toArray(new CompletableFuture[completableFutures.size()])).join();
 
 		for(UserDto userDto : allUsersDto) {
