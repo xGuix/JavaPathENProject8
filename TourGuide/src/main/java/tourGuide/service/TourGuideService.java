@@ -3,6 +3,7 @@ package tourGuide.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,7 @@ import gpsUtil.GpsUtil;
 import gpsUtil.location.Attraction;
 import gpsUtil.location.VisitedLocation;
 import rewardCentral.RewardCentral;
+import tourGuide.dto.GpsUtilDto;
 import tourGuide.dto.NearbyAttractionsDto;
 import tourGuide.helper.InternalTestDataSet;
 import tourGuide.dto.UserDto;
@@ -108,7 +110,7 @@ public class TourGuideService {
 				nearbyAttractionsListDto.add(nearBy);
 			}
 		}
-		return nearbyAttractionsListDto;
+		return nearbyAttractionsListDto.stream().limit(5).collect(Collectors.toList());
 	}
 	
 	private void addShutDownHook() {

@@ -29,7 +29,7 @@ public class IntegrationTourGuideTestIT {
 		RewardCentral rewardCentral = new RewardCentral();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
-		InternalTestHelper.setInternalUserNumber(0);
+		InternalTestHelper.setInternalUserNumber(1);
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, gpsUtil , rewardsService, rewardCentral);
 		
 		UserDto userDto = new UserDto(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
@@ -44,7 +44,7 @@ public class IntegrationTourGuideTestIT {
 		RewardCentral rewardCentral = new RewardCentral();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
-		InternalTestHelper.setInternalUserNumber(0);
+		InternalTestHelper.setInternalUserNumber(1);
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet,gpsUtil , rewardsService, rewardCentral);
 		
 		UserDto userDto = new UserDto(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
@@ -68,7 +68,7 @@ public class IntegrationTourGuideTestIT {
 		RewardCentral rewardCentral = new RewardCentral();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
-		InternalTestHelper.setInternalUserNumber(0);
+		InternalTestHelper.setInternalUserNumber(1);
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet,gpsUtil , rewardsService, rewardCentral);
 		
 		UserDto userDto = new UserDto(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
@@ -91,7 +91,7 @@ public class IntegrationTourGuideTestIT {
 		RewardCentral rewardCentral = new RewardCentral();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
-		InternalTestHelper.setInternalUserNumber(0);
+		InternalTestHelper.setInternalUserNumber(1);
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet,gpsUtil , rewardsService, rewardCentral);
 		
 		UserDto userDto = new UserDto(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
@@ -109,7 +109,7 @@ public class IntegrationTourGuideTestIT {
 		RewardCentral rewardCentral = new RewardCentral();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
-		InternalTestHelper.setInternalUserNumber(0);
+		InternalTestHelper.setInternalUserNumber(1);
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet,gpsUtil , rewardsService, rewardCentral);
 		
 		UserDto userDto = new UserDto(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
@@ -120,7 +120,7 @@ public class IntegrationTourGuideTestIT {
 		
 		tourGuideService.trackerService.stopTracking();
 		
-		assertEquals(gpsUtil.getAttractions().size(), attractions.size());
+		assertEquals(5, attractions.size());
 	}
 	
 	public void getTripDeals() {
@@ -128,7 +128,7 @@ public class IntegrationTourGuideTestIT {
 		RewardCentral rewardCentral = new RewardCentral();
 		RewardsService rewardsService = new RewardsService(gpsUtil, new RewardCentral());
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
-		InternalTestHelper.setInternalUserNumber(0);
+		InternalTestHelper.setInternalUserNumber(1);
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet,gpsUtil , rewardsService, rewardCentral);
 		
 		UserDto userDto = new UserDto(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");

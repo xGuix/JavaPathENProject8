@@ -30,7 +30,7 @@ public class TestPerformanceIT {
 	/**
 	 * Create ThreadPool of 1000
 	 */
-	Executor executor = Executors.newFixedThreadPool(2000);
+	Executor executor = Executors.newFixedThreadPool(1000);
 	/*
 	 * A note on performance improvements:
 	 *     
@@ -62,18 +62,18 @@ public class TestPerformanceIT {
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet,gpsUtil, rewardsService, rewardCentral);
 
 		List<UserDto> allUsersDto;
-		ArrayList<CompletableFuture> completableFutures;
-		completableFutures = new ArrayList<>();
+		ArrayList<CompletableFuture> completableFutures= new ArrayList<>();
 		allUsersDto = tourGuideService.getAllUsers();
 		
 	    StopWatch stopWatch = new StopWatch();
 		stopWatch.start();
-		for(UserDto userDto : allUsersDto) {
+
+		allUsersDto.forEach(u -> {
 			CompletableFuture completable = CompletableFuture.runAsync(() -> {
-				tourGuideService.trackUserLocation(userDto);
+				tourGuideService.trackUserLocation(u);
 				}, executor);
 			completableFutures.add(completable);
-		}
+		});
 		CompletableFuture.allOf(completableFutures.toArray(new CompletableFuture[completableFutures.size()])).join();
 
 		tourGuideService.trackerService.stopTracking();
@@ -92,7 +92,7 @@ public class TestPerformanceIT {
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
 		InternalTestHelper.setInternalUserNumber(100000);
 		StopWatch stopWatch = new StopWatch();
-		rewardsService.resetThreadPool();
+		//rewardsService.resetThreadPool();
 		stopWatch.start();
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet,gpsUtil, rewardsService, rewardCentral);
 		

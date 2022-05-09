@@ -90,20 +90,4 @@ public class RewardsService {
         double nauticalMiles = 60 * Math.toDegrees(angle);
 		return STATUTE_MILES_PER_NAUTICAL_MILE * nauticalMiles;
 	}
-
-	/**
-	 * Reset thread pool.
-	 */
-	public void resetThreadPool() {
-		executorService = Executors.newFixedThreadPool(64);
-	}
-
-	/**
-	 * Gets executor service.
-	 *
-	 * @return the executor service
-	 */
-	public ExecutorService getExecutorService() {
-		return executorService;
-	}
 }

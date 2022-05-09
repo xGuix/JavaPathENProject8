@@ -37,7 +37,7 @@ public class GpsUtilDto {
     }
 
     public void setVisitedLocation(VisitedLocation visitedLocation) {
-        this.visitedLocation = visitedLocation;
+        this.visitedLocation = visitedLocation;;
     }
 
     public Attraction getAttraction() {
