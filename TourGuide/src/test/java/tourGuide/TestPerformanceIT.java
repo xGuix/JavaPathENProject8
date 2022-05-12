@@ -58,7 +58,7 @@ public class TestPerformanceIT {
 		RewardsService rewardsService = new RewardsService(gpsUtil, rewardCentral);
 		// Users should be incremented up to 100,000, and test finishes within 15 minutes
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
-		InternalTestHelper.setInternalUserNumber(100000);
+		InternalTestHelper.setInternalUserNumber(10000);
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet,gpsUtil, rewardsService, rewardCentral);
 
 		List<UserDto> allUsersDto;
@@ -76,7 +76,6 @@ public class TestPerformanceIT {
 		});
 		CompletableFuture.allOf(completableFutures.toArray(new CompletableFuture[completableFutures.size()])).join();
 
-		tourGuideService.trackerService.stopTracking();
 		stopWatch.stop();
 
 		logger.info("highVolumeTrackLocation / Time Elapsed: {} seconds.", TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()));
@@ -90,9 +89,8 @@ public class TestPerformanceIT {
 		RewardsService rewardsService = new RewardsService(gpsUtil, rewardCentral);
 		// Users should be incremented up to 100,000 and test finishes within 20 minutes
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
-		InternalTestHelper.setInternalUserNumber(100000);
+		InternalTestHelper.setInternalUserNumber(10000);
 		StopWatch stopWatch = new StopWatch();
-		//rewardsService.resetThreadPool();
 		stopWatch.start();
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet,gpsUtil, rewardsService, rewardCentral);
 		
@@ -114,7 +112,6 @@ public class TestPerformanceIT {
 			assertTrue(userDto.getUserRewards().size() > 0);
 		}
 
-		tourGuideService.trackerService.stopTracking();
 		stopWatch.stop();
 
 		logger.info("highVolumeGetRewards / Time Elapsed: {} seconds.", TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()));

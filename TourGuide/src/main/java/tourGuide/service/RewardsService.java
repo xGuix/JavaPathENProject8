@@ -1,6 +1,8 @@
 package tourGuide.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -12,7 +14,6 @@ import gpsUtil.location.Attraction;
 import gpsUtil.location.Location;
 import gpsUtil.location.VisitedLocation;
 import rewardCentral.RewardCentral;
-import tourGuide.dto.GpsUtilDto;
 import tourGuide.dto.UserDto;
 import tourGuide.dto.UserRewardDto;
 
@@ -21,11 +22,6 @@ import tourGuide.dto.UserRewardDto;
  */
 @Service
 public class RewardsService {
-
-	/**
-	 * @newFixedThreadPool fixe the number of Thread
-	 */
-	private ExecutorService executorService = Executors.newFixedThreadPool(1000);
 
     private static final double STATUTE_MILES_PER_NAUTICAL_MILE = 1.15077945;
 
@@ -52,9 +48,9 @@ public class RewardsService {
 	public List<UserRewardDto> calculateRewards(UserDto userDto) {
 		List<VisitedLocation> userLocations = userDto.getVisitedLocations();
 		List<Attraction> attractions = gpsUtil.getAttractions();
-		List<VisitedLocation> userLocationsNew = new CopyOnWriteArrayList<VisitedLocation>(userLocations);
+		//List<VisitedLocation> userLocationsConverter = new CopyOnWriteArrayList<>(userLocations);
 
-		for (VisitedLocation visitedLocation : userLocationsNew) {
+		userDto.getVisitedLocations().forEach(visitedLocation -> {
 			attractions.forEach(a -> {
 				if (userDto.getUserRewards().stream().noneMatch(r -> r.getAttraction().attractionName.equals(a.attractionName))) {
 					if (nearAttraction(visitedLocation, a)) {
@@ -62,7 +58,7 @@ public class RewardsService {
 					}
 				}
 			});
-		}
+		});
 		return userDto.getUserRewards();
 	}
 

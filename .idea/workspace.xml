@@ -17,12 +17,11 @@
       <change beforePath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/service/TourGuideService.class" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/build/classes/java/main/tourGuide/service/TourGuideService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/dto/GpsUtilDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/dto/GpsUtilDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/service/RewardsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/service/RewardsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/service/TourGuideService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/service/TourGuideService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/service/TrackerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/main/java/tourGuide/service/TrackerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/TestPerformanceIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/TestPerformanceIT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/controller/TourGuideControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/controller/TourGuideControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/integration/IntegrationRewardsTestIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/integration/IntegrationRewardsTestIT.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/integration/IntegrationTourGuideTestIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/TourGuide/src/test/java/tourGuide/integration/IntegrationTourGuideTestIT.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,6 +73,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/TourGuide/build.gradle" root0="SKIP_HIGHLIGHTING" />
@@ -179,23 +186,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="IntegrationRewardsTestIT.nearAllAttractions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="TourGuide.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tourGuide.integration.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tourGuide.integration" />
-      <option name="MAIN_CLASS_NAME" value="tourGuide.integration.IntegrationRewardsTestIT" />
-      <option name="METHOD_NAME" value="nearAllAttractions" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="IntegrationTourGuideTestIT.getNearbyAttractions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="IntegrationTourGuideTestIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="TourGuide.test" />
       <extension name="coverage">
         <pattern>
@@ -205,8 +196,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="tourGuide.integration" />
       <option name="MAIN_CLASS_NAME" value="tourGuide.integration.IntegrationTourGuideTestIT" />
-      <option name="METHOD_NAME" value="getNearbyAttractions" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -227,37 +217,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestPerformanceIT.highVolumeGetRewards" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="TourGuide.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tourGuide.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tourGuide" />
-      <option name="MAIN_CLASS_NAME" value="tourGuide.TestPerformanceIT" />
-      <option name="METHOD_NAME" value="highVolumeGetRewards" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.TourGuide" />
       <item itemvalue="Gradle.TourGuide [build]" />
       <item itemvalue="Gradle.TourGuide [:test]" />
       <item itemvalue="JUnit.TestPerformanceIT" />
-      <item itemvalue="JUnit.IntegrationRewardsTestIT.nearAllAttractions" />
-      <item itemvalue="JUnit.TestPerformanceIT.highVolumeGetRewards" />
-      <item itemvalue="JUnit.IntegrationTourGuideTestIT.getNearbyAttractions" />
+      <item itemvalue="JUnit.IntegrationTourGuideTestIT" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.IntegrationTourGuideTestIT.getNearbyAttractions" />
+        <item itemvalue="JUnit.IntegrationTourGuideTestIT" />
         <item itemvalue="JUnit.TestPerformanceIT" />
-        <item itemvalue="JUnit.TestPerformanceIT.highVolumeGetRewards" />
-        <item itemvalue="JUnit.IntegrationRewardsTestIT.nearAllAttractions" />
       </list>
     </recent_temporary>
   </component>
@@ -331,7 +301,7 @@
       <FILTER>tourGuide.integration.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/JavaPathENProject8$TourGuide__test_.ic" NAME="TourGuide [test] Coverage Results" MODIFIED="1651159472792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/JavaPathENProject8$TourGuide___test_.ic" NAME="TourGuide [:test] Coverage Results" MODIFIED="1652134057580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/JavaPathENProject8$TourGuide___test_.ic" NAME="TourGuide [:test] Coverage Results" MODIFIED="1652177539887" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/JavaPathENProject8$TourGuide.ic" NAME="TourGuide Coverage Results" MODIFIED="1651049703457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

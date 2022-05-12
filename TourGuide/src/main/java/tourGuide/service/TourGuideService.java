@@ -13,7 +13,6 @@ import gpsUtil.GpsUtil;
 import gpsUtil.location.Attraction;
 import gpsUtil.location.VisitedLocation;
 import rewardCentral.RewardCentral;
-import tourGuide.dto.GpsUtilDto;
 import tourGuide.dto.NearbyAttractionsDto;
 import tourGuide.helper.InternalTestDataSet;
 import tourGuide.dto.UserDto;
@@ -48,7 +47,7 @@ public class TourGuideService {
 		logger.debug("Initializing users");
 		internalTestDataSet.initializeInternalUsers();
 		logger.debug("Finished initializing users");
-		trackerService = new TrackerService(this);
+		trackerService = new TrackerService(this, rewardsService);
 		addShutDownHook();
 	}
 
