@@ -58,7 +58,7 @@ public class TestPerformanceIT {
 		RewardsService rewardsService = new RewardsService(gpsUtil, rewardCentral);
 		// Users should be incremented up to 100,000, and test finishes within 15 minutes
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
-		InternalTestHelper.setInternalUserNumber(10000);
+		InternalTestHelper.setInternalUserNumber(100000);
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet,gpsUtil, rewardsService, rewardCentral);
 
 		List<UserDto> allUsersDto;
@@ -89,7 +89,7 @@ public class TestPerformanceIT {
 		RewardsService rewardsService = new RewardsService(gpsUtil, rewardCentral);
 		// Users should be incremented up to 100,000 and test finishes within 20 minutes
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
-		InternalTestHelper.setInternalUserNumber(10000);
+		InternalTestHelper.setInternalUserNumber(100000);
 		StopWatch stopWatch = new StopWatch();
 		stopWatch.start();
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet,gpsUtil, rewardsService, rewardCentral);

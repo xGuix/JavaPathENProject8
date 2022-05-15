@@ -49,14 +49,8 @@ public class TrackerService extends Thread {
 	@Override
 	public void run() {
 		StopWatch stopWatch = new StopWatch();
-		ExecutorService trackExecutor = Executors.newSingleThreadExecutor();
-		ExecutorService rewardExecutor = Executors.newSingleThreadExecutor();
-
-		while(true) {
-			if (Thread.currentThread().isInterrupted() || stop) {
-				logger.debug("Tracker stopping");
-				break;
-			}
+		ExecutorService trackExecutor = Executors.newFixedThreadPool(1);
+		ExecutorService rewardExecutor = Executors.newFixedThreadPool(1);
 
 			List<UserDto> userDtoList = tourGuideService.getAllUsers();
 			logger.debug("Begin Tracker. Tracking {} users.", userDtoList.size());
@@ -70,6 +64,5 @@ public class TrackerService extends Thread {
 			stopWatch.stop();
 
 			logger.debug("Tracker  Time Elapsed: {} seconds.", TimeUnit.MILLISECONDS.toSeconds(stopWatch.getTime()));
-		}
 	}
 }

@@ -29,7 +29,7 @@ public class IntegrationRewardsTestIT {
 		RewardCentral rewardCentral = new RewardCentral();
 		RewardsService rewardsService = new RewardsService(gpsUtil, rewardCentral);
 		InternalTestDataSet internalTestDataSet = new InternalTestDataSet();
-		InternalTestHelper.setInternalUserNumber(0);
+		InternalTestHelper.setInternalUserNumber(1);
 		TourGuideService tourGuideService = new TourGuideService(internalTestDataSet, gpsUtil, rewardsService, rewardCentral);
 		
 		UserDto userDto = new UserDto(UUID.randomUUID(), "jon", "000", "jon@tourGuide.com");
@@ -64,8 +64,8 @@ public class IntegrationRewardsTestIT {
 		rewardsService.calculateRewards(tourGuideService.getAllUsers().get(0));
 		List<UserRewardDto> userRewardsDto = tourGuideService.getUserRewards(tourGuideService.getAllUsers().get(0));
 		tourGuideService.trackerService.stopTracking();
-		UserDto userDto = tourGuideService.getAllUsers().get(0);
 
+		UserDto userDto = tourGuideService.getAllUsers().get(0);
 		assertEquals(userDto.getUserRewards().size(), userRewardsDto.size());
 	}
 }

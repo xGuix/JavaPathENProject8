@@ -1,11 +1,12 @@
 package tourGuide.service;
 
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ import gpsUtil.location.VisitedLocation;
 import rewardCentral.RewardCentral;
 import tourGuide.dto.UserDto;
 import tourGuide.dto.UserRewardDto;
+
 
 /**
  * Reward Service
@@ -31,35 +33,50 @@ public class RewardsService {
 	public final int attractionProximityRange = 10000;
 	private final GpsUtil gpsUtil;
 	private final RewardCentral rewardsCentral;
-	
+
 	public RewardsService(GpsUtil gpsUtil, RewardCentral rewardCentral) {
 		this.gpsUtil = gpsUtil;
 		this.rewardsCentral = rewardCentral;
 	}
-	
+
 	public void setProximityBuffer(int proximityBuffer) {
 		this.proximityBuffer = proximityBuffer;
 	}
-	
+
 	public void setDefaultProximityBuffer() {
 		proximityBuffer = defaultProximityBuffer;
 	}
-	
+
 	public List<UserRewardDto> calculateRewards(UserDto userDto) {
 		List<VisitedLocation> userLocations = userDto.getVisitedLocations();
 		List<Attraction> attractions = gpsUtil.getAttractions();
-		//List<VisitedLocation> userLocationsConverter = new CopyOnWriteArrayList<>(userLocations);
 
-		userDto.getVisitedLocations().forEach(visitedLocation -> {
-			attractions.forEach(a -> {
-				if (userDto.getUserRewards().stream().noneMatch(r -> r.getAttraction().attractionName.equals(a.attractionName))) {
-					if (nearAttraction(visitedLocation, a)) {
-						userDto.getUserRewards().add(new UserRewardDto(visitedLocation, a, getRewardPoints(a, userDto)));
+		ExecutorService rewardExecutor = Executors.newSingleThreadExecutor();
+
+		CompletableFuture completable = CompletableFuture.runAsync(() -> {
+			for (VisitedLocation vl : userLocations) {
+				for (Attraction a : attractions) {
+					if (userDto.getUserRewards().stream().noneMatch(r -> r.getAttraction().attractionName.equals(a.attractionName))) {
+						if (nearAttraction(vl, a)) {
+							userDto.addUserReward(new UserRewardDto(vl, a, getRewardPoints(a, userDto)));
+						}
 					}
 				}
-			});
-		});
+			}
+		}, rewardExecutor);
+		CompletableFuture.allOf(completable).join();
 		return userDto.getUserRewards();
+
+//		userLocations.forEach(visitedLocation -> {
+//			attractions.forEach(a -> {
+//				if (userDto.getUserRewards().stream().noneMatch(r -> r.getAttraction().attractionName.equals(a.attractionName))) {
+//					if (nearAttraction(visitedLocation, a)) {
+//						userDto.getUserRewards().add(new UserRewardDto(visitedLocation, a, getRewardPoints(a, userDto)));
+//					}
+//				}
+//			});
+//		});
+//		return userDto.getUserRewards();
 	}
 
 	public boolean isWithinAttractionProximity(Attraction attraction, Location location) {
